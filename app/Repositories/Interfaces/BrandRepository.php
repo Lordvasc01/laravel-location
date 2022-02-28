@@ -9,5 +9,5 @@ interface BrandRepository
 {
     public function firstOrCreate(array $attributes, array $values = []): Model;
 
-    public function all($columns): Collection;
+    public function list(): Collection;
 }

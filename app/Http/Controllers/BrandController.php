@@ -16,7 +16,7 @@ class BrandController extends Controller
 
     public function index()
     {
-        return $this->repository->all('*');
+        return $this->repository->list();
     }
 
     public function store(Request $request)

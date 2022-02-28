@@ -13,8 +13,8 @@ class BrandEloquentRepository extends EloquentRepository implements BrandReposit
         return $this->query()->firstOrCreate($attributes, $values);
     }
 
-    public function all($columns = ['*']): Collection
+    public function list(): Collection
     {
-        return $this->query()->get($columns);
+        return $this->query()->get();
     }
 }
