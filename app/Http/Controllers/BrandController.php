@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\BrandService;
+use App\Repositories\Interfaces\BrandRepository;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    private $brandService;
+    private $repository;
 
-    public function __construct(BrandService $brandService)
+    public function __construct(BrandRepository $repository)
     {
-        $this->brandService = $brandService;
+        $this->repository = $repository;
     }
 
-    public function store(Request $request) {
-        return $this->brandService->save();
+    public function index()
+    {
+        return $this->repository->all('*');
+    }
+
+    public function store(Request $request)
+    {
+        return $this->repository->firstOrCreate($request->all());
     }
 }
