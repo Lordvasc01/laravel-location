@@ -17,4 +17,9 @@ class BrandEloquentRepository extends EloquentRepository implements BrandReposit
     {
         return $this->query()->get();
     }
+
+    public function findById($id)
+    {
+        return $this->query()->findOrFail($id);
+    }
 }

@@ -10,4 +10,6 @@ interface BrandRepository
     public function firstOrCreate(array $attributes, array $values = []): Model;
 
     public function list(): Collection;
+
+    public function findById(int $id);
 }

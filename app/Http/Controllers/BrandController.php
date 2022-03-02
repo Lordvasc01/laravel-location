@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBrandRequest;
 use App\Repositories\Interfaces\BrandRepository;
-use Illuminate\Http\Request;
-
 class BrandController extends Controller
 {
-    private $repository;
+    private BrandRepository $repository;
 
     public function __construct(BrandRepository $repository)
     {
@@ -19,8 +18,13 @@ class BrandController extends Controller
         return $this->repository->list();
     }
 
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        return $this->repository->firstOrCreate($request->all());
+        return $this->repository->firstOrCreate($request->validated());
+    }
+
+    public function show($id)
+    {
+        return $this->repository->findById($id);
     }
 }
