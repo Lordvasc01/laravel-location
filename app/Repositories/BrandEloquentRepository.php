@@ -22,4 +22,14 @@ class BrandEloquentRepository extends EloquentRepository implements BrandReposit
     {
         return $this->query()->findOrFail($id);
     }
+
+    public function update(array $attributes, $id)
+    {
+        return $this->query()->where('id', $id)->update($attributes);
+    }
+
+    public function delete($id)
+    {
+        return $this->query()->where('id', $id)->delete();
+    }
 }

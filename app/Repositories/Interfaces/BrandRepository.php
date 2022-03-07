@@ -12,4 +12,8 @@ interface BrandRepository
     public function list(): Collection;
 
     public function findById(int $id);
+
+    public function update(array $payload, $id);
+
+    public function delete($id);
 }
